@@ -45,7 +45,7 @@ def esc(s):
     return html.escape(s, quote=True)
 
 def header(root, active):
-    links = "".join(
+    links = "\n".join(
         f'<li><a href="{root}{href}"{" aria-current=\"page\"" if active == href else ""}>{label}</a></li>'
         for href, label in NAV)
     return f'''<a class="skip" href="#main">Skip to content</a>
@@ -69,7 +69,7 @@ def logo_svg():
             '8-8-1.3-1.3a4 4 0 0 0-5-5"/><path d="M3 21l6-6"/></svg>')
 
 def footer(root, cats):
-    catlinks = "".join(f'<li><a href="{root}tools/#{c["id"]}">{c["name"]}</a></li>' for c in cats[:6])
+    catlinks = "\n".join(f'<li><a href="{root}tools/#{c["id"]}">{c["name"]}</a></li>' for c in cats[:6])
     return f'''<footer class="site-footer">
   <div class="container">
     <div class="foot-grid">
@@ -122,7 +122,7 @@ def page(*, path, title, desc, body, root, cats, active="", schema=None, extra_h
     ld = ""
     if schema:
         for s in (schema if isinstance(schema, list) else [schema]):
-            ld += f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>\n'
+            ld += f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False, indent=1)}</script>\n'
     robots = '<meta name="robots" content="noindex,follow">' if noindex else '<meta name="robots" content="index,follow,max-image-preview:large">'
     return f'''<!doctype html>
 <html lang="en" data-root="{root}">

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regular Expressions for Beginners: Patterns You&#x27;ll Actually Use | Tech.Tools</title>
+<meta name="description" content="Learn regex from scratch: character classes, quantifiers, anchors, groups and lookarounds, with ten copy-ready patterns and common pitfalls.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://tech.tools/guides/regular-expressions-for-beginners/">
+<meta name="google-adsense-account" content="ca-pub-6620975821265271">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6620975821265271" crossorigin="anonymous"></script>
+<meta property="og:type" content="article"><meta property="og:site_name" content="Tech.Tools">
+<meta property="og:title" content="Regular Expressions for Beginners: Patterns You&#x27;ll Actually Use | Tech.Tools"><meta property="og:description" content="Learn regex from scratch: character classes, quantifiers, anchors, groups and lookarounds, with ten copy-ready patterns and common pitfalls.">
+<meta property="og:url" content="https://tech.tools/guides/regular-expressions-for-beginners/"><meta property="og:image" content="https://tech.tools/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c1222">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://tech.tools/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Guides",
+   "item": "https://tech.tools/guides/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Regular Expressions for Beginners: Patterns You'll Actually Use",
+   "item": "https://tech.tools/guides/regular-expressions-for-beginners/"
+  }
+ ]
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Regular Expressions for Beginners: Patterns You'll Actually Use",
+ "description": "Learn regex from scratch: character classes, quantifiers, anchors, groups and lookarounds, with ten copy-ready patterns and common pitfalls.",
+ "datePublished": "2026-10-16",
+ "dateModified": "2026-10-16",
+ "author": {
+  "@type": "Organization",
+  "name": "Tech.Tools Editorial"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Tech.Tools"
+ },
+ "mainEntityOfPage": "https://tech.tools/guides/regular-expressions-for-beginners/"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "VideoObject",
+ "name": "Learn Regular Expressions In 20 Minutes — Web Dev Simplified",
+ "description": "Video lesson accompanying the guide: Regular Expressions for Beginners: Patterns You'll Actually Use",
+ "thumbnailUrl": "https://i.ytimg.com/vi/rhzKDrUiJVk/hqdefault.jpg",
+ "uploadDate": "2020-01-01",
+ "embedUrl": "https://www.youtube-nocookie.com/embed/rhzKDrUiJVk"
+}</script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar" role="note"><a href="https://web.works/contact" target="_blank" rel="noopener">Contact, if you are interested in this website / domain name / Sponsorship / Advertisement / Partnership</a></div>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="logo" href="../../" aria-label="Tech.Tools home"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5"/><path d="M3 21l6-6"/></svg></span><span>Tech<span class="dot">.</span>Tools</span></a>
+    <ul class="nav-links"><li><a href="../../tools/">Tools</a></li>
+<li><a href="../../directory/">Directory</a></li>
+<li><a href="../../guides/" aria-current="page">Guides</a></li>
+<li><a href="../../videos/">Videos</a></li>
+<li><a href="../../advertise/">Advertise</a></li>
+<li><a href="../../support/">Support</a></li><li><a href="../../get-expert-help/">Get Expert Help</a></li></ul>
+    <div class="nav-actions">
+      <button class="search-trigger" data-search-open aria-label="Search tools"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span>Search tools…</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a class="btn btn-primary btn-cta" href="../../get-expert-help/">Free Tech Audit</a>
+      <button class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </nav>
+</header>
+<main id="main">
+<div class="container page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Home</a> / <a href="../../guides/">Guides</a> / Regular Expressions for Beginners</nav>
+<span class="badge blue">Developer</span> <span class="muted" style="font-size:.85rem">· 10 min read · Updated 2026-10-16</span>
+<h1 style="margin-top:12px">Regular Expressions for Beginners: Patterns You&#x27;ll Actually Use</h1><p class="lead">Learn regex from scratch: character classes, quantifiers, anchors, groups and lookarounds, with ten copy-ready patterns and common pitfalls.</p></div>
+<div class="container tool-layout"><article class="prose">
+  <div class="video"><button class="video-lite" data-id="rhzKDrUiJVk" aria-label="Play video: Learn Regular Expressions In 20 Minutes — Web Dev Simplified"></button></div><p class="form-note">Video: Learn Regular Expressions In 20 Minutes — Web Dev Simplified. Embedded from YouTube in privacy-enhanced mode; all rights belong to the creator.</p>
+  
+<p>Regular expressions (regex) describe patterns in text. With one line you can validate a postcode, pull every order number out of a log file or reformat a thousand dates. The syntax looks cryptic at first, but around a dozen symbols cover 90% of real-world use. Open our <a href="../../tools/regex-tester/">regex tester</a> in another tab and try each example as you read.</p>
+<h2>Literal characters and the special ones</h2>
+<p>Most characters match themselves: the pattern <code>cat</code> finds “cat”. Twelve characters have special meaning and must be escaped with a backslash to match literally: <code>. ^ $ * + ? ( ) [ ] { } | \</code>. So to match “3.14” you write <code>3\.14</code>.</p>
+<h2>Character classes</h2>
+<table><tr><th>Pattern</th><th>Matches</th></tr>
+<tr><td><code>.</code></td><td>Any character except newline</td></tr>
+<tr><td><code>\d</code> / <code>\D</code></td><td>A digit / a non-digit</td></tr>
+<tr><td><code>\w</code> / <code>\W</code></td><td>Word character [A-Za-z0-9_] / anything else</td></tr>
+<tr><td><code>\s</code> / <code>\S</code></td><td>Whitespace / non-whitespace</td></tr>
+<tr><td><code>[aeiou]</code></td><td>Any one listed character</td></tr>
+<tr><td><code>[^0-9]</code></td><td>Any character <em>not</em> in the range</td></tr></table>
+<h2>Quantifiers: how many?</h2>
+<p><code>*</code> means zero or more, <code>+</code> one or more, <code>?</code> zero or one, and <code>{2,4}</code> between two and four. Quantifiers are <b>greedy</b> by default — they grab as much as possible. Add <code>?</code> to make them lazy: in <code>&lt;b&gt;bold&lt;/b&gt;</code>, the pattern <code>&lt;.+&gt;</code> matches the whole string while <code>&lt;.+?&gt;</code> matches just <code>&lt;b&gt;</code>.</p>
+<h2>Anchors and boundaries</h2>
+<p><code>^</code> anchors to the start and <code>$</code> to the end (of the string, or of each line with the <code>m</code> flag). <code>\b</code> marks a word boundary, so <code>\bcat\b</code> matches “cat” but not “category”. Anchors are essential for validation — without them, <code>\d{5}</code> happily “validates” <code>abc123456xyz</code>.</p>
+<h2>Groups, alternation and backreferences</h2>
+<p>Parentheses group parts of a pattern and capture what they match: <code>(\d{4})-(\d{2})-(\d{2})</code> captures year, month and day. Reference them in replacements as <code>$1</code>, <code>$2</code>… — so replacing with <code>$3/$2/$1</code> converts ISO dates to day/month/year. Name groups for readability: <code>(?&lt;year&gt;\d{4})</code>. The pipe <code>|</code> means “or”: <code>(jpg|png|webp)$</code>.</p>
+<h2>Lookarounds</h2>
+<p>Lookaheads <code>(?=...)</code> and lookbehinds <code>(?&lt;=...)</code> assert that something comes next (or before) without consuming it. The classic use is password rules: <code>^(?=.*\d)(?=.*[A-Z]).{12,}$</code> requires a digit, an uppercase letter and 12+ characters.</p>
+<h2>Ten patterns worth bookmarking</h2>
+<pre><code>Email (pragmatic):   ^[^\s@]+@[^\s@]+\.[^\s@]+$
+URL:                 https?://[^\s/$.?#].[^\s]*
+IPv4:                \b(?:\d{1,3}\.){3}\d{1,3}\b
+ISO date:            \d{4}-\d{2}-\d{2}
+Time 24h:            ^([01]\d|2[0-3]):[0-5]\d$
+Hex colour:          #(?:[0-9a-fA-F]{3}){1,2}\b
+UUID:                [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+Duplicate words:     \b(\w+)\s+\1\b
+Trailing spaces:     [ \t]+$
+US ZIP:              ^\d{5}(-\d{4})?$</code></pre>
+<h2>Pitfalls</h2>
+<ul><li><b>Catastrophic backtracking.</b> Nested quantifiers like <code>(a+)+$</code> can take exponential time on certain inputs — a real denial-of-service risk on servers.</li>
+<li><b>Over-validating emails.</b> The full email grammar is enormous; a simple pattern plus a confirmation email is better than a 6,000-character regex.</li>
+<li><b>Parsing HTML.</b> Regex can't reliably parse nested markup — use a DOM parser.</li></ul>
+
+  <h2>Try the tools</h2><div class="grid g2" style="max-width:none"><a class="card tool-card" href="../../tools/regex-tester/" data-cat="developer"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span><span><h3>Regex Tester</h3><p>Test JavaScript regular expressions with live highlighting and groups.</p></span></a>
+<a class="card tool-card" href="../../tools/text-cleaner/" data-cat="text"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><span><h3>Text Cleaner &amp; Line Tools</h3><p>Trim, dedupe, sort, shuffle, number and strip HTML from text.</p></span></a></div>
+  <div class="callout mt">Found an error or want a topic covered? <a href="../../contact/">Tell us</a> — we review every message.</div>
+</article>
+<aside class="side"><aside class="card" style="border-color:var(--primary)">
+<span class="badge blue">Free · 24h reply</span>
+<h3 style="margin-top:10px">Need this done for your project?</h3>
+<p>Get matched with a vetted developer, IT or SaaS specialist. Free consultation, no obligation.</p>
+<a class="btn btn-primary btn-block" href="../../get-expert-help/">Get expert help →</a></aside><div class="card"><h3>More guides</h3><div style="display:flex;flex-direction:column;gap:8px"><a href="../../guides/json-explained/">JSON Explained →</a>
+<a href="../../guides/git-and-github-basics/">Git &amp; GitHub Basics →</a>
+<a href="../../guides/how-dns-works/">How DNS Works →</a></div></div><aside class="sponsor-card"><small>Sponsored slot available</small>
+<strong>Put your product in front of developers &amp; IT buyers</strong>
+<p class="muted" style="font-size:.88rem;margin:.4em 0 .8em">Native placements on high-intent tool pages.</p>
+<a class="btn btn-ghost btn-sm" href="../../advertise/">See sponsorship options</a></aside></aside></div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="../../"><span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5"/><path d="M3 21l6-6"/></svg></span><span>Tech<span class="dot">.</span>Tools</span></a>
+        <p class="muted" style="margin-top:12px">Free, fast, privacy-first tech utilities that run in your browser — plus guides, videos and a curated directory of the software that powers modern teams.</p>
+        <form class="newsletter" data-tt-form="Newsletter" data-success="You're on the list. Watch your inbox for the next Tech.Tools digest.">
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="form" value="newsletter">
+          <label class="hp" for="nl-email">Email</label>
+          <input id="nl-email" type="email" name="email" placeholder="you@company.com" required aria-label="Email address">
+          <button class="btn btn-primary btn-sm" type="submit">Subscribe</button>
+          <div class="form-status" role="status"></div>
+        </form>
+      </div>
+      <div><h4>Tools</h4><ul><li><a href="../../tools/#developer">Developer</a></li>
+<li><a href="../../tools/#security">Security</a></li>
+<li><a href="../../tools/#network">Network & IT</a></li>
+<li><a href="../../tools/#seo">Web & SEO</a></li>
+<li><a href="../../tools/#text">Text & Writing</a></li>
+<li><a href="../../tools/#design">Design & Images</a></li><li><a href="../../tools/">All tools →</a></li></ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="../../guides/">Guides</a></li><li><a href="../../videos/">Video library</a></li>
+        <li><a href="../../directory/">Software directory</a></li><li><a href="../../directory/submit/">Submit a tool</a></li>
+        <li><a href="../../contests/">Contests &amp; prizes</a></li><li><a href="../../sitemap/">Sitemap</a></li></ul></div>
+      <div><h4>Business</h4><ul>
+        <li><a href="../../get-expert-help/">Get expert help</a></li><li><a href="../../advertise/">Advertise &amp; sponsor</a></li>
+        <li><a href="../../partners/">Partnerships</a></li><li><a href="../../careers/">Careers &amp; talent</a></li>
+        <li><a href="../../support/">Support / donate</a></li><li><a href="https://web.works/contact" target="_blank" rel="noopener">Acquire this domain</a></li></ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a href="../../about/">About</a></li><li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../privacy/">Privacy Policy</a></li><li><a href="../../terms/">Terms of Use</a></li>
+        <li><a href="../../cookies/">Cookie Policy</a></li><li><a href="../../disclaimer/">Disclaimer</a></li>
+        <li><a href="../../legal/">Trademark &amp; Copyright</a></li><li><a href="../../accessibility/">Accessibility</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> Tech.Tools. Original content and code © Tech.Tools. All rights reserved.</span>
+      <span>Tech.Tools is an independent publication and is not affiliated with any company named “TechTools”, “Tech Tools” or similar. Third-party names and logos are trademarks of their respective owners. <a href="../../legal/">Full disclosure</a>.</span>
+    </div>
+  </div>
+</footer>
+<div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-box"><input type="search" placeholder="Search tools and guides…" aria-label="Search"><div class="search-results"></div></div>
+</div>
+<div class="cookie" role="dialog" aria-label="Cookie notice">
+  <strong>Cookies &amp; ads</strong>
+  <p style="margin:.4em 0 0">We use cookies for essential features, analytics and to serve ads (Google AdSense), which keep every tool free. See our <a href="../../cookies/">Cookie Policy</a> and <a href="../../privacy/">Privacy Policy</a>.</p>
+  <div class="btns"><button class="btn btn-primary btn-sm" data-cookie="all">Accept</button><button class="btn btn-ghost btn-sm" data-cookie="essential">Essential only</button></div>
+</div>
+<div class="sticky-cta"><a class="btn btn-accent" href="../../get-expert-help/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-4A13 13 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg> Get a free tech stack audit</a> <button class="icon-btn" data-cta-close aria-label="Dismiss" style="display:inline-grid;vertical-align:middle;width:32px;height:32px">×</button></div>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/main.js"></script>
+
+</body>
+</html>
