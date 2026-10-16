@@ -24,8 +24,14 @@ python3 scripts/build.py
 - Shell/header/footer: `scripts/layout.py` · Styles: `assets/css/style.css`
 - Donation payment buttons: paste hosted payment links into `assets/js/config.js`
 
-## Hosting
-GitHub Pages → Settings → Pages → Deploy from branch `main`, folder `/ (root)`. For the custom domain add `tech.tools` under Custom domain and point DNS A records to 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153.
+## Hosting (GitHub Pages, free)
+The built site is committed at the repository root, so GitHub Pages serves it straight from `main` — no Actions needed.
+
+One-time setup: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `(root)` → Save.** The site appears at `https://webworksa1.github.io/tech-tools/`.
+
+Custom domain: under Settings → Pages enter `tech.tools` (GitHub adds a `CNAME` file), point DNS A records for the apex to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, add a `www` CNAME to `webworksa1.github.io`, then tick **Enforce HTTPS**.
+
+After editing anything in `scripts/` or `assets/`, run `python3 scripts/build.py` and commit the regenerated files.
 
 ## Strategy
 See `docs/BUILD-PROMPT.md` (business case + phase-wise build prompt) and `docs/RESEARCH.md` (competitive research).
