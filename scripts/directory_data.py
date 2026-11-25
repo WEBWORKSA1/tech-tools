@@ -6,7 +6,12 @@ DIR_CATS = [
     ("marketing", "Marketing & SEO"), ("monitoring", "Monitoring & Analytics"),
 ]
 
-D = lambda n, u, c, p, d, ugc=False: dict(name=n, url=u, cat=c, price=p, desc=d, ugc=ugc)  # ugc=True: user-submitted listing
+# Link attributes set by build.py:
+#   curated entry                          -> rel="noopener nofollow"
+#   ugc=True  (approved community listing) -> rel="nofollow ugc noopener"
+#   featured=True (paid placement)         -> pinned first, labelled "Featured", rel="sponsored noopener"
+#   logo: optional site-relative image path for featured cards, e.g. "assets/img/logos/acme.svg"
+D = lambda n, u, c, p, d, ugc=False, featured=False, logo="": dict(name=n, url=u, cat=c, price=p, desc=d, ugc=ugc, featured=featured, logo=logo)
 
 DIRECTORY = [
     D("Visual Studio Code", "https://code.visualstudio.com/", "dev", "Free", "Lightweight, extensible code editor with a huge extension marketplace."),
@@ -32,8 +37,6 @@ DIRECTORY = [
     D("Trello", "https://trello.com/", "productivity", "Freemium", "Visual Kanban boards for tasks and projects."),
     D("Slack", "https://slack.com/", "productivity", "Freemium", "Team messaging with channels, huddles and integrations."),
     D("Zapier", "https://zapier.com/", "productivity", "Freemium", "No-code automation connecting thousands of web apps."),
-    D("myTpen", "https://www.myTpen.app", "productivity", "Paid", "Academic workflows for teachers covering lesson planning, exams, grading and classroom admin.", ugc=True),
-    D("Novastart", "https://novastart.com/", "productivity", "Freemium", "Infinite-canvas whiteboard that brings apps, shared canvases and AI agents into one visual workspace.", ugc=True),
     D("Bitwarden", "https://bitwarden.com/", "security", "Freemium", "Open-source password manager with passkey support."),
     D("1Password", "https://1password.com/", "security", "Paid", "Password and secrets manager for families and businesses."),
     D("Proton", "https://proton.me/", "security", "Freemium", "Encrypted email, VPN, drive and password manager."),
@@ -56,4 +59,13 @@ DIRECTORY = [
     D("Grafana", "https://grafana.com/", "monitoring", "Freemium", "Open-source dashboards for metrics, logs and traces."),
     D("Plausible", "https://plausible.io/", "monitoring", "Paid", "Lightweight, privacy-friendly web analytics."),
     D("SSL Labs Server Test", "https://www.ssllabs.com/ssltest/", "monitoring", "Free", "Deep analysis of a server's TLS configuration."),
+]
+
+# Submissions on hold. NOT rendered anywhere on the site. Move an entry into DIRECTORY (with ugc=True) once it passes review.
+PENDING = [
+    # Novastart (submitted 2026-11-10, reviewed 2026-11-25). Missing: a downloadable build we can run and check for the
+    # "working product" and "no malware" criteria (the /install/ buttons are page anchors with no file, checksum or
+    # signature; the linked GitHub org has no public repositories). Also noted: no Terms of Service published.
+    # Operator named on the site: Marketplace Distributors LLC, Manhattan Beach, CA.
+    D("Novastart", "https://novastart.com/", "productivity", "Freemium", "Operating system built around an infinite canvas where apps, teammates and AI agents share one workspace.", ugc=True),
 ]

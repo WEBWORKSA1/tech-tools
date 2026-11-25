@@ -69,7 +69,7 @@ def logo_svg():
             '8-8-1.3-1.3a4 4 0 0 0-5-5"/><path d="M3 21l6-6"/></svg>')
 
 def footer(root, cats):
-    catlinks = "\n".join(f'<li><a href="{root}tools/#{c["id"]}">{c["name"]}</a></li>' for c in cats[:6])
+    catlinks = "\n".join(f'<li><a href="{root}tools/#{c["id"]}">{c["name"]}</a></li>' for c in cats)
     return f'''<footer class="site-footer">
   <div class="container">
     <div class="foot-grid">
