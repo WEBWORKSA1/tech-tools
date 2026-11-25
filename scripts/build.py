@@ -277,7 +277,7 @@ def build_directory():
     filt = '<button class="on" data-f="all">All</button>' + "\n".join(f'<button data-f="{k}">{v}</button>' for k, v in DIR_CATS)
     catname = dict(DIR_CATS)
     items = "\n".join(f'''<div class="card dir-item" data-cat="{d["cat"]}"><div class="meta"><span class="badge blue">{catname[d["cat"]]}</span><span class="badge {"green" if d["price"] in ("Free","Open source") else ""}">{d["price"]}</span></div>
-<h3 style="margin:0">{esc(d["name"])}</h3><p style="margin:0">{esc(d["desc"])}</p><a class="go" href="{d["url"]}" target="_blank" rel="noopener nofollow">Visit site ↗</a></div>''' for d in DIRECTORY)
+<h3 style="margin:0">{esc(d["name"])}</h3><p style="margin:0">{esc(d["desc"])}</p><a class="go" href="{esc(d["url"])}" target="_blank" rel="{"nofollow ugc noopener" if d.get("ugc") else "noopener nofollow"}">Visit site ↗</a></div>''' for d in DIRECTORY)
     featured = '''<div class="card dir-item" style="border:2px dashed var(--accent)"><div class="meta"><span class="badge">Featured slot</span></div><h3 style="margin:0">Your product here</h3><p style="margin:0">Pinned at the top of every directory view, with a logo and call-to-action.</p><a class="go" href="../advertise/">Get featured →</a></div>'''
     body = f'''<div class="container page-head">{crumbs(root, [("Directory", "")])}<h1>Software directory</h1>
 <p class="lead">{len(DIRECTORY)} trusted apps and services for building, shipping, securing and growing — curated by the Tech.Tools team. We list tools on merit; sponsored placements are always labelled.</p>
